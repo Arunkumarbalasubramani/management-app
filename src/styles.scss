@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
+.App {
+  background: linear-gradient(
+    to left top,
+    #cf88b0,
+    #c07db3,
+    #ad74b6,
+    #956cba,
+    #7567be,
+    #5d72c7,
+    #3f7bcd,
+    #0084d0,
+    #009bd4,
+    #24b0d3,
+    #5ac3d0,
+    #87d4d0
+  );
+  height: 100vh;
+}
+.welcome-txt {
+  text-align: center;
+  font-family: "Signika Negative", sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  color: whitesmoke;
+}
+
+.adnl-welcome-txt {
+  font-family: "Dancing Script", cursive;
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(239, 231, 217);
+}
+.mainpage-container {
+  display: flex;
+  gap: 20%;
+  justify-content: center;
+  align-items: center;
+  height: 50rem;
+}
+.options {
+  //   background-color: red;
+  height: 35rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.teachersIcon {
+  height: 256px;
+  width: 256px;
+  border-radius: 50%;
+}
+.not-available-page {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.page-container {
+  background: linear-gradient(
+    to left top,
+    #cf88b0,
+    #c07db3,
+    #ad74b6,
+    #956cba,
+    #7567be,
+    #5d72c7,
+    #3f7bcd,
+    #0084d0,
+    #009bd4,
+    #24b0d3,
+    #5ac3d0,
+    #87d4d0
+  );
+  height: 100vh;
+}
+.table-container {
+  margin: 4%;
+  padding: 4%;
+}
+.list-table {
+  border: 1px solid black;
+}
