@@ -6,3 +6,6 @@ export { default as TeachersPage } from "./TechersPage";
 export { default as Notavailable } from "./Notavailable";
 export { default as StudentList } from "./StudentList";
 export { default as TeacherList } from "./TeacherList";
+export { default as AddPage } from "./Add";
+export { default as EditPage } from "./EditPage";
+export { default as DeletePage } from "./DeletePage";
