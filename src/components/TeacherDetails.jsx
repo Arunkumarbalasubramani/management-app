@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
-
+import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -16,7 +16,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import SchoolIcon from "@mui/icons-material/School";
 import { useNavigate, useParams } from "react-router-dom";
-
+import EditIcon from "@mui/icons-material/Edit";
 const TeacherDetails = () => {
   const { teacherId } = useParams();
   const [teachersData, setTeachersData] = useState([]);
@@ -50,15 +50,34 @@ const TeacherDetails = () => {
       <div className="wrapper">
         <h1 className="pageHeading">Teachers Details</h1>
         <div className="action-btns">
-          <Tooltip title="Delete" arrow>
-            <IconButton
-              aria-label="delete"
-              size="large"
-              onClick={() => navigate(`/teachers/delete/${id}`)}
-            >
-              <DeleteIcon fontSize="inherit" />
-            </IconButton>
-          </Tooltip>
+          <Button
+            variant="contained"
+            endIcon={<HomeIcon />}
+            onClick={() => navigate(`/teachers`)}
+          >
+            Back to Home
+          </Button>
+
+          <div>
+            <Tooltip title="Edit Details" arrow>
+              <IconButton
+                aria-label="edit"
+                size="large"
+                onClick={() => navigate(`/teachers/edit/${id}`)}
+              >
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete" arrow>
+              <IconButton
+                aria-label="delete"
+                size="large"
+                onClick={() => navigate(`/teachers/delete/${id}`)}
+              >
+                <DeleteIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
+          </div>
         </div>
 
         <div className="details-container">
@@ -129,7 +148,7 @@ const TeacherDetails = () => {
                 <BloodtypeIcon />
                 <h4> Blood Type:</h4>
                 <div className="list">
-                  <h4>{bloodgroup}</h4>
+                  <h4>{bloodgroup} Ve</h4>
                 </div>
               </div>
             </div>
@@ -166,7 +185,10 @@ const TeacherDetails = () => {
                 <SchoolIcon />
                 <h4> Class Educator:</h4>
                 <div className="list">
-                  <h4>{classedu}</h4>
+                  <h4>
+                    {classedu}
+                    <sup>th</sup> Standard
+                  </h4>
                 </div>
               </div>
             </div>

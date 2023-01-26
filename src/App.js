@@ -9,6 +9,9 @@ import {
   TeachersPage,
   EditPage,
   DeletePage,
+  Addstudent,
+  EditStudent,
+  DeleteStudents,
 } from "./components/exports";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
@@ -21,12 +24,15 @@ function App() {
           <Route path="/teachers/:teacherId" element={<TeacherDetails />} />
           <Route path="/students" element={<StudentsPage />} />
           <Route path="/teachers/add" element={<AddPage />} />
-          <Route path="/students/add" element={<AddPage />} />
+          <Route path="/students/add" element={<Addstudent />} />
           <Route path="/students/:studentId" element={<StudentDetails />} />
 
           <Route path="/teachers/edit/:teacherId" element={<EditPage />} />
-          <Route path="/students/edit/:studentId" element={<EditPage />} />
-          <Route path="/students/delete/:studentId" element={<DeletePage />} />
+          <Route path="/students/edit/:studentId" element={<EditStudent />} />
+          <Route
+            path="/students/delete/:studentId"
+            element={<DeleteStudents />}
+          />
           <Route path="/teachers/delete/:teacherId" element={<DeletePage />} />
           <Route path="*" element={<Notavailable />} />
         </Routes>

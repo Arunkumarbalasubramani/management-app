@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddPage = () => {
+const Addstudent = () => {
   const navigate = useNavigate();
   const initialState = [
     {
@@ -33,7 +33,7 @@ const AddPage = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`https://63ce6b066d27349c2b6cf20a.mockapi.io/teachers`, {
+      .post(`https://63ce6b066d27349c2b6cf20a.mockapi.io//students`, {
         name: data.name,
         avatar: data.avatar,
 
@@ -48,7 +48,7 @@ const AddPage = () => {
         bloodgroup: data.bloodgroup,
         classedu: data.classedu,
       })
-      .then((res) => navigate(`/teachers/${res.data.id}`));
+      .then((res) => navigate(`/students/${res.data.id}`));
   };
   const {
     name,
@@ -58,10 +58,9 @@ const AddPage = () => {
     phone,
     emergencyno,
     city,
-    expertise,
+    standard,
     gender,
     bloodgroup,
-    classedu,
   } = data;
   return (
     <div className="page-container">
@@ -122,13 +121,13 @@ const AddPage = () => {
                   />
                 </div>
                 <div className="inputs">
-                  <div className="input-label">Expertise</div>{" "}
+                  <div className="input-label">Standard</div>{" "}
                   <TextField
                     id="expertise"
                     variant="filled"
                     fullWidth
                     margin="dense"
-                    value={expertise}
+                    value={standard}
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
@@ -176,17 +175,7 @@ const AddPage = () => {
                     onChange={(e) => handleChange(e)}
                   />
                 </div>
-                <div className="inputs">
-                  <div className="input-label">Class Educator </div>{" "}
-                  <TextField
-                    id="classedu"
-                    variant="filled"
-                    fullWidth
-                    margin="dense"
-                    value={classedu}
-                    onChange={(e) => handleChange(e)}
-                  />
-                </div>
+
                 <div className="inputs">
                   <div className="input-label">Photo</div>{" "}
                   <TextField
@@ -210,4 +199,4 @@ const AddPage = () => {
   );
 };
 
-export default AddPage;
+export default Addstudent;

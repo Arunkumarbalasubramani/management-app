@@ -9,3 +9,6 @@ export { default as TeacherList } from "./TeacherList";
 export { default as AddPage } from "./Add";
 export { default as EditPage } from "./EditPage";
 export { default as DeletePage } from "./DeletePage";
+export { default as Addstudent } from "./Addstudent";
+export { default as EditStudent } from "./editStudent";
+export { default as DeleteStudents } from "./DeleteStudents";

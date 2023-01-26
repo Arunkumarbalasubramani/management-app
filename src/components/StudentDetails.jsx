@@ -1,7 +1,192 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import EmailIcon from "@mui/icons-material/Email";
+import Man3Icon from "@mui/icons-material/Man3";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import BloodtypeIcon from "@mui/icons-material/Bloodtype";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import ContactEmergencyIcon from "@mui/icons-material/ContactEmergency";
+import HomeIcon from "@mui/icons-material/Home";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+
+import { useNavigate, useParams } from "react-router-dom";
+import EditIcon from "@mui/icons-material/Edit";
 
 const StudentDetails = () => {
-  return <div>StudentDetails</div>;
+  const { studentId } = useParams();
+  const [studentsData, setstudentsData] = useState([]);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const getData = async () => {
+      const response = await axios.get(
+        `https://63ce6b066d27349c2b6cf20a.mockapi.io/students/${studentId}`
+      );
+      setstudentsData(response.data);
+    };
+    getData();
+  }, [studentId]);
+
+  const {
+    id,
+    address,
+    name,
+    avatar,
+    city,
+    emailid,
+    emergencyno,
+    gender,
+    standard,
+    phone,
+    bloodgroup,
+  } = studentsData;
+  return (
+    <div className="page-container">
+      <div className="wrapper">
+        <h1 className="pageHeading"> Details of {name}</h1>
+        <div className="action-btns">
+          <Button
+            variant="contained"
+            endIcon={<HomeIcon />}
+            onClick={() => navigate(`/students`)}
+          >
+            Back to Home
+          </Button>
+
+          <div>
+            <Tooltip title="Edit Details" arrow>
+              <IconButton
+                aria-label="edit"
+                size="large"
+                onClick={() => navigate(`/students/edit/${id}`)}
+              >
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete" arrow>
+              <IconButton
+                aria-label="delete"
+                size="large"
+                onClick={() => navigate(`/students/delete/${id}`)}
+              >
+                <DeleteIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
+          </div>
+        </div>
+
+        <div className="details-container">
+          <div className="picture">
+            <img src={avatar} alt="..." className="profile-pic" />
+            <h4>
+              <LinkedInIcon />
+              @linkedIn.com
+            </h4>
+          </div>
+          <div className="details-wrapper">
+            <div className="detail-list">
+              <div className="detail">
+                <DriveFileRenameOutlineIcon />
+                <h4>Name:</h4>
+                <div className="list">
+                  <h4>{name}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <EmailIcon />
+                <h4> Email:</h4>
+                <div className="list">
+                  <h4>{emailid}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <Man3Icon />
+                <h4>Gender:</h4>
+                <div className="list">
+                  <h4>{gender?.toUpperCase()}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <Man3Icon />
+                <h4>ID Card No:</h4>
+                <div className="list">
+                  <h4>{id}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <PhoneAndroidIcon />
+                <h4> Mobile-No:</h4>
+                <div className="list">
+                  <h4>+91-{phone}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <MenuBookIcon />
+                <h4> Class:</h4>
+                <div className="list">
+                  <h4>
+                    {standard} <sup>th</sup> Standard
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <BloodtypeIcon />
+                <h4> Blood Type:</h4>
+                <div className="list">
+                  <h4>{bloodgroup} Ve</h4>
+                </div>
+              </div>
+            </div>
+
+            <div className="detail-list">
+              <div className="detail">
+                <ContactEmergencyIcon />
+                <h4> Emergency Contact:</h4>
+                <div className="list">
+                  <h4>+91-{emergencyno}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <HomeIcon />
+                <h4> Address:</h4>
+                <div className="list">
+                  <h4>{address}</h4>
+                </div>
+              </div>
+            </div>
+            <div className="detail-list">
+              <div className="detail">
+                <LocationCityIcon />
+                <h4> City:</h4>
+                <div className="list">
+                  <h4>{city}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default StudentDetails;

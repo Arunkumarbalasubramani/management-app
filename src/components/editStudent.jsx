@@ -6,20 +6,20 @@ import Box from "@mui/material/Box";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const EditPage = () => {
-  const { teacherId } = useParams();
+const EditStudent = () => {
+  const { studentId } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
   useEffect(() => {
     const getEditData = async () => {
       const response = await axios.get(
-        `https://63ce6b066d27349c2b6cf20a.mockapi.io/teachers/${teacherId}`
+        `https://63ce6b066d27349c2b6cf20a.mockapi.io/students/${studentId}`
       );
       setData(response.data);
     };
     getEditData();
-  }, [teacherId]);
+  }, [studentId]);
 
   const handleChange = (e) => {
     const newData = { ...data };
@@ -30,12 +30,12 @@ const EditPage = () => {
     e.preventDefault();
     axios
       .put(
-        `https://63ce6b066d27349c2b6cf20a.mockapi.io/teachers/${teacherId}`,
+        `https://63ce6b066d27349c2b6cf20a.mockapi.io/students/${studentId}`,
         data
       )
       .then((res) => {
         setData(res.data);
-        navigate(`/teachers/${res.data.id}`);
+        navigate(`/students/${res.data.id}`);
       });
   };
   return (
@@ -98,13 +98,13 @@ const EditPage = () => {
                     />
                   </div>
                   <div className="inputs">
-                    <div className="input-label">Expertise</div>{" "}
+                    <div className="input-label">Standard</div>{" "}
                     <TextField
-                      id="expertise"
+                      id="standard"
                       variant="filled"
                       fullWidth
                       margin="dense"
-                      value={data.expertise}
+                      value={data.standard}
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
@@ -152,17 +152,7 @@ const EditPage = () => {
                       onChange={(e) => handleChange(e)}
                     />
                   </div>
-                  <div className="inputs">
-                    <div className="input-label">Class Educator </div>{" "}
-                    <TextField
-                      id="classedu"
-                      variant="filled"
-                      fullWidth
-                      margin="dense"
-                      value={data.classedu}
-                      onChange={(e) => handleChange(e)}
-                    />
-                  </div>
+
                   <div className="inputs">
                     <div className="input-label">Photo</div>{" "}
                     <TextField
@@ -187,4 +177,4 @@ const EditPage = () => {
   );
 };
 
-export default EditPage;
+export default EditStudent;

@@ -148,7 +148,7 @@
 }
 .action-btns {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .profile-pic {
   height: 256px;
@@ -186,4 +186,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  // gap: 30px;
+}
+.input-label {
+  width: 12rem;
+  font-size: 20px;
 }

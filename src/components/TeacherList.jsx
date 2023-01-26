@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
+
 const TeacherList = ({ teachersData }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -21,19 +22,19 @@ const TeacherList = ({ teachersData }) => {
     { id: "name", label: "Name", minWidth: 170 },
     { id: "code", label: "Handling Subject", minWidth: 100 },
     {
-      id: "population",
+      id: "emailid",
       label: "Email-Id",
       minWidth: 170,
       align: "right",
     },
     {
-      id: "size",
+      id: "city",
       label: "City",
       minWidth: 170,
       align: "right",
     },
     {
-      id: "density",
+      id: "phone",
       label: "Mobile-No",
       minWidth: 170,
       align: "right",
@@ -78,7 +79,7 @@ const TeacherList = ({ teachersData }) => {
                       </Nav.Link>
                     </TableCell>{" "}
                     <TableCell component="th" scope="row">
-                      {row.handlingSub}
+                      {row.expertise}
                     </TableCell>
                     <TableCell component="th" scope="row">
                       {row.emailid}
@@ -92,7 +93,7 @@ const TeacherList = ({ teachersData }) => {
                     <TableCell
                       component="th"
                       scope="row"
-                      onClick={() => navigate(`/teachers/${row.id}/edit`)}
+                      onClick={() => navigate(`/teachers/edit/${row.id}`)}
                     >
                       <Tooltip title="Edit Details">
                         <IconButton>
