@@ -3,6 +3,9 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import TeacherList from "./TeacherList";
 import { useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
 
 const TeachersPage = () => {
   const [teachersData, setTeachersData] = useState([]);
@@ -22,6 +25,15 @@ const TeachersPage = () => {
       <div className="table-container">
         <h1 className="pageHeading">Teachers List</h1>
         <div className="addthings">
+          <Tooltip title="Back to Home" arrow>
+            <IconButton
+              aria-label="delete"
+              size="large"
+              onClick={() => navigate(`/`)}
+            >
+              <HomeIcon fontSize="inherit" />
+            </IconButton>
+          </Tooltip>
           <Button
             variant="primary"
             size="lg"
